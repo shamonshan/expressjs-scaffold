@@ -11,13 +11,28 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 /*
+* Load the routes
+*/
+
+app.use('/', require('./route'));
+
+/*
+* 404 Error handler
+*/
+app.use(function (req, res, next) {
+    let err = new Error('Not Found');
+    err.status = 404;
+    next(err);
+});
+
+/*
 * Handle the application errors here
 */
 app.use((err, req, res, next) => {
 
-    res.json({
-        title: 'Internal Server Error',
-        errors: 'Internal Server Error Occured'
+    console.log(err);
+    res.status(err.status).json({
+        title: err.message
     })
 });
 

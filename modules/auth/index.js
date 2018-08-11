@@ -2,11 +2,22 @@ const express = require('express');
 const router = express.Router();
 
 /*
-ES6 Object destructing
+*ES6 Object destructing
 */
-const {login,signup} = require('./controller/auth');
+const {login,signup,profile} = require('./controller/auth');
+
+/*
+* Middlewares
+*/
+
+const {isLoggedUser } = require('./middleware/auth');
 
 router.get('/signup',signup);
-router.post('/login',login);
+router.get('/login',login);
 
-modue.exports = router;
+/*
+* Middlware only for /profile route
+*/
+router.get('/profile',isLoggedUser,profile);
+
+module.exports = router;
