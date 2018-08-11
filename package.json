@@ -1,0 +1,14 @@
+{
+  "name": "express-scaffolding",
+  "version": "1.0.0",
+  "description": "Expressjs modular architecture app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
