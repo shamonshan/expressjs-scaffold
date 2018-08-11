@@ -2,16 +2,25 @@ const express = require('express')
 const app = express();
 const bodyParser = require('body-parser');
 
+/*
+* Load the configurations from .env 
+*/
+require('dotenv').config(process.cwd(), '.env')
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use((err, req, res, next)=>{
+/*
+* Handle the application errors here
+*/
+app.use((err, req, res, next) => {
 
-	 res.json({
-		 title:'Internal Server Error',
-		 errors:'Internal Server Error Occured'
-	 })
+    res.json({
+        title: 'Internal Server Error',
+        errors: 'Internal Server Error Occured'
+    })
 });
 
-
-module.exports = app;
+module.exports = {
+    app
+};
