@@ -9,11 +9,10 @@ const {login,signup,profile} = require('./controller/auth');
 /*
 * Middlewares
 */
-
 const {isLoggedUser } = require('./middleware/auth');
 
 router.get('/signup',signup);
-router.get('/login',login);
+router.post('/login',login);
 
 /*
 * Middlware only for /profile route

@@ -1,21 +1,34 @@
-const signup = function signup(req,res){
+/*
+* Load the service
+*/
+const { loginService } = require('../services/auth');
+
+const signup = function signup(req, res) {
     res.status(200).json({
-        text:'Signup here'
+        text: 'Signup here'
     });
 }
 
-const login = function login(req,res){
+const login = function login(req, res) {
+
+    /*
+    *Invoke the service
+    */
+    let loginStatus = loginService({
+        username: req.body.username,
+        password: req.body.password
+    });
     res.status(200).json({
-        text:'Login here'
+        text: 'Login ' + loginStatus
     });
 }
 
-const profile = function profile(req,res){
-     res.json({
-         text:'Protected Profile here '
-     })
+const profile = function profile(req, res) {
+    res.json({
+        text: 'Protected Profile here '
+    })
 }
 
 module.exports = {
-    signup,login,profile
+    signup, login, profile
 }
